@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreemat Satsangijivan Katha | Vadtaldham Adelaide</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #8a1515;
+            --secondary: #e67e22;
+            --dark: #2c3e50;
+            --light: #fdfaf6;
+            --accent: #27ae60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            max-width: 280px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero / Poster Section */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .poster-container {
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .poster-container img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .poster-container img:hover {
+            transform: scale(1.02);
+        }
+
+        .hero-details {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+        }
+
+        .hero-details h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .event-meta-item {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+
+        .event-meta-item i {
+            color: var(--secondary);
+            width: 20px;
+        }
+
+        /* Countdown Timer */
+        .countdown-container {
+            margin-top: 25px;
+            background: #fff5eb;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed var(--secondary);
+            text-align: center;
+        }
+
+        .countdown-title {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .countdown-box {
+            background: white;
+            padding: 8px;
+            border-radius: 6px;
+            min-width: 60px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .countdown-box span {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .countdown-box label {
+            font-size: 0.7rem;
+            color: #777;
+        }
+
+        /* Registration Form Section */
+        .booking-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--accent);
+        }
+
+        .booking-card h2 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #1e8449;
+        }
+
+        .btn-calendar {
+            background: #34495e;
+            margin-top: 10px;
+        }
+
+        .btn-calendar:hover {
+            background: #2c3e50;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: var(--accent);
+        }
+
+        .success-message i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        /* 7 Day Schedule Section */
+        .schedule-section {
+            margin: 40px 0;
+        }
+
+        .schedule-section h2 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .tab-btn {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .schedule-content {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-time {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .timeline-detail h4 {
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        /* Location, Donation, and Footer Split grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f1f1f1;
+            padding-bottom: 8px;
+        }
+
+        /* Clickable Map Element */
+        .map-wrapper {
+            position: relative;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .map-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: filter 0.3s;
+        }
+
+        .map-wrapper:hover img {
+            filter: brightness(90%);
+        }
+
+        .map-overlay-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(138, 21, 21, 0.9);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Social / External Links buttons */
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .social-link:hover {
+            opacity: 0.9;
+        }
+
+        .whatsapp-btn { background-color: #25D366; }
+        .facebook-btn { background-color: #1877F2; }
+        .instagram-btn { background-color: #E1306C; }
+        .donate-btn { background-color: #d35400; font-size: 1.1rem; border: 2px solid #f39c12;}
+
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Logo Area -->
+    <header>
+        <img src="vadtaldham-logo.jpeg" alt="Shree Swaminarayan Vadtaldham Sanatan Mandir Adelaide Logo" class="logo">
+    </header>
+
+    <div class="container">
+
+        <!-- Hero Section: Poster and Primary Event Info -->
+        <section class="hero-section">
+            <div class="poster-container">
+                <img src="image_3a929f.jpg" alt="Shreemat Satsangijivan Katha GharSabha Event Poster">
+            </div>
+            
+            <div class="hero-details">
+                <span class="badge"><i class="fa-solid fa-calendar-days"></i> 7-Day Mega Festival</span>
+                <h1>Shreemat Satsangijivan Katha</h1>
+                <h3 style="color:var(--secondary); margin-bottom:15px;">2290<sup>th</sup> to 2297<sup>th</sup> GharSabha</h3>
+                
+                <p style="margin-bottom: 20px; font-size: 1rem; color: #555;">
+                    Join us in the divine presence of Chairman Swami Shree Santvallabhdasji & Mukhya Kothari Swami Shree Devprakashdasji (Vadtal Sansthan). Orated beautifully by Pujya Sadguru Swami Shree Nityaswarupdasji.
+                </p>
+
+                <div class="event-meta-item">
+                    <i class="fa-solid fa-calendar"></i>
+                    <span><strong>Date:</strong> July 20 to July 27, 2026</span>
+                </div>
+                <div class="event-meta-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <span><strong>Timing:</strong> 5:30 PM to 7:30 PM Daily</span>
+                </div>
+                <div class="event-meta-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>21 Greenfields Drive, Green Fields SA 5107</span>
+                </div>
+
+                <!-- Event Countdown -->
+                <div class="countdown-container">
+                    <div class="countdown-title">Event Starts In</div>
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-box"><span id="days">00</span><label>Days</label></div>
+                        <div class="countdown-box"><span id="hours">00</span><label>Hrs</label></div>
+                        <div class="countdown-box"><span id="minutes">00</span><label>Mins</label></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section class="booking-card" id="booking">
+            <div id="booking-form-wrapper">
+                <h2>Free Registration & Attendance Booking</h2>
+                <p style="color:#666; margin-bottom: 20px;">Registering helps management calculate accurate catering arrangements for daily Mahaprasad (Food).</p>
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="attendees">Number of Total Family Members Attending</label>
+                        <select id="attendees">
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5+ People</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Confirm Free Booking</button>
+                </form>
+            </div>
+
+            <!-- Block shown after registering -->
+            <div id="booking-success" class="success-message">
+                <i class="fa-solid fa-circle-check"></i>
+                <h2>You're Registered for Free!</h2>
+                <p>Thank you for letting us know your headcount. We look forward to welcome you and your family.</p>
+                
+                <!-- Add To Calendar Button Link -->
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shreemat+Satsangijivan+Katha+GharSabha&dates=20260720T173000Z/20260727T193000Z&details=7-Day+Divine+Katha+at+Vadtaldham+Adelaide.+Orator:+Pujya+Sadguru+Swami+Shree+Nityaswarupdasji.&location=21+Greenfields+Drive,+Green+Fields+SA+5107" 
+                   target="_blank" class="social-link btn-calendar">
+                   <i class="fa-solid fa-calendar-plus"></i> Add Event To Calendar
+                </a>
+            </div>
+        </section>
+
+        <!-- 7 Days Running Timeline Schedule -->
+        <section class="schedule-section">
+            <h2>Daily Event Schedule (All 7 Days)</h2>
+            <div class="tabs" id="tabs-container">
+                <!-- Javascript will load buttons here -->
+            </div>
+            
+            <div class="schedule-content" id="schedule-details">
+                <!-- Day content dynamic insertion -->
+            </div>
+        </section>
+
+        <!-- Information / Connections Split Layout Grid -->
+        <div class="info-grid">
+            
+            <!-- Map Card & Contact info -->
+            <div class="info-card">
+                <h3>Location & Quick Contacts</h3>
+                <p style="margin-bottom:15px; font-size:0.95rem; color:#555;">Click the map placeholder below to automatically open the driving directions inside Google Maps directly onto the Temple.</p>
+                
+                <!-- Dynamic Link to Open Map directions -->
+                <div class="map-wrapper" onclick="window.open('https://www.google.com/maps/search/?api=1&query=Shree+Swaminarayan+Vadtaldham+Sanatan+Mandir+Adelaide+21+Greenfields+Drive+Green+Fields+SA+5107', '_blank');">
+                    <!-- Standard visual placeholder image for Google map integration -->
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80" alt="Map Route View">
+                    <div class="map-overlay-text">
+                        <i class="fa-solid fa-map-location-dot"></i> Tap to Open Temple Navigation Route
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; font-size:0.9rem;">
+                    <p style="margin:5px 0;"><strong>For More Info Contact:</strong></p>
+                    <p><i class="fa-solid fa-phone" style="color:var(--secondary)"></i> Alpeshbhai Sachdev: +61 410 008 366</p>
+                    <p><i class="fa-solid fa-phone" style="color:var(--secondary)"></i> Naresh Rathod: +61 430 361 091</p>
+                    <p><i class="fa-solid fa-phone" style="color:var(--secondary)"></i> Hardevsinh Chauhan: +61 438 520 138</p>
+                </div>
+            </div>
+
+            <!-- Media Channels & Donation Portal Link -->
+            <div class="info-card">
+                <h3>Support & Community Groups</h3>
+                <p style="margin-bottom: 12px; font-size:0.95rem; color:#555;">Support our upcoming temple projects or stay updated by turning on notifications across our local platforms:</p>
+                
+                <a href="https://vadtaldhamadelaide.github.io/Donate/" target="_blank" class="social-link donate-btn">
+                    <i class="fa-solid fa-heart"></i> Online Donation Page
+                </a>
+
+                <div class="social-buttons">
+                    <a href="https://chat.whatsapp.com/KCyV6z7Avn7EugLV2KL8XY?mode=hqrc" target="_blank" class="social-link whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Join WhatsApp Community Group
+                    </a>
+                    <a href="https://www.facebook.com/Shree.Swaminarayan.Mandir.VadtalDham.Adelaide" target="_blank" class="social-link facebook-btn">
+                        <i class="fa-brands fa-facebook"></i> Follow Facebook Page
+                    </a>
+                    <a href="https://www.instagram.com/vadtaldham_adelaide" target="_blank" class="social-link instagram-btn">
+                        <i class="fa-brands fa-instagram"></i> Follow us on Instagram
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Shree Swaminarayan Vadtaldham Sanatan Mandir Adelaide</p>
+        <p style="font-size:0.8rem; margin-top:5px; opacity: 0.8;">Jay Swaminarayan | 200th Dwishatabdi Mahotsav Vadtal Dham</p>
+    </footer>
+
+    <script>
+        // Data structure representing the complete 7-Day Katha itinerary breakdown
+        const scheduleData = {
+            1: { date: "Mon, July 20", events: [ {time: "5:30 PM", name: "Deep Pragatya & Evening Aarti", desc: "Opening inaugural prayers for the Katha week."}, {time: "5:45 PM", name: "Shreemat Satsangijivan GharSabha", desc: "Day 1 spiritual discourse by Pujya Swami Nityaswarupdasji."}, {time: "7:30 PM", name: "Mahaprasad (Food)", desc: "Served cleanly for all assembled devotees."} ] },
+            2: { date: "Tue, July 21", events: [ {time: "5:30 PM", name: "Sandhya Aarti", desc: "Daily group prayer chanting ritual."}, {time: "5:45 PM", name: "Shreemat Satsangijivan GharSabha", desc: "Day 2 dynamic scripts readings and internalizing learnings."}, {time: "7:30 PM", name: "Mahaprasad (Food)", desc: "Fresh vegetarian meal prasadam serving."} ] },
+            3: { date: "Wed, July 22", events: [ {time: "5:30 PM", name: "Sandhya Aarti", desc: "Daily group prayer chanting ritual."}, {time: "5:45 PM", name: "Shreemat Satsangijivan GharSabha", desc: "Day 3 deep diving into primary devotional milestones."}, {time: "7:30 PM", name: "Mahaprasad (Food)", desc: "Fresh vegetarian meal prasadam serving."} ] },
+            4: { date: "Thu, July 23", events: [ {time: "5:30 PM", name: "Sandhya Aarti", desc: "Daily group prayer chanting ritual."}, {time: "5:45 PM", name: "Shreemat Satsangijivan GharSabha", desc: "Day 4 special explanations of essential structural scriptures."}, {time: "7:30 PM", name: "Mahaprasad (Food)", desc: "Fresh vegetarian meal prasadam serving."} ] },
+            5: { date: "Fri, July 24", events: [ {time: "5:30 PM", name: "Sandhya Aarti", desc: "Daily group prayer chanting ritual."}, {time: "5:45 PM", name: "Shreemat Satsangijivan GharSabha", desc: "Day 5 spiritual discourse sessions with question clarifications."}, {time: "7:30 PM", name: "Mahaprasad (Food)", desc: "Fresh vegetarian meal prasadam serving."} ] },
+            6: { date: "Sat, July 25", events: [ {time: "5:30 PM", name: "Sandhya Aarti", desc: "Daily group prayer chanting ritual."}, {time: "5:45 PM", name: "Shreemat Satsangijivan GharSabha", desc: "Weekend special katha chapter with highlights for local youth."}, {time: "7:30 PM", name: "Mahaprasad (Food)", desc: "Grand weekend community feast serving."} ] },
+            7: { date: "Sun, July 26", events: [ {time: "5:30 PM", name: "Grand Finale Aarti & Purnahuti", desc: "Concluding divine prayers, honors, and flower offerings."}, {time: "5:45 PM", name: "Shreemat Satsangijivan Final Chapter", desc: "Day 7 completion blessings given by visiting Santos."}, {time: "7:30 PM", name: "Maha-Mahaprasad (Food)", desc: "Final celebratory prasadam distribution for all families."} ] }
+        };
+
+        // Render Tabs and Schedule dynamically
+        const tabsContainer = document.getElementById('tabs-container');
+        const detailsContainer = document.getElementById('schedule-details');
+
+        function renderSchedule(dayNum) {
+            const data = scheduleData[dayNum];
+            let html = `<h4 style="color:var(--secondary); margin-bottom:15px;">Itinerary for ${data.date}</h4>`;
+            
+            data.events.forEach(e => {
+                html += `
+                    <div class="timeline-item">
+                        <div class="timeline-time"><i class="fa-regular fa-clock"></i> ${e.time}</div>
+                        <div class="timeline-detail">
+                            <h4>${e.name}</h4>
+                            <p style="font-size:0.9rem; color:#666;">${e.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            detailsContainer.innerHTML = html;
+        }
+
+        // Initialize Tab Buttons
+        Object.keys(scheduleData).forEach((day, index) => {
+            const btn = document.createElement('button');
+            btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+            btn.innerText = `Day ${day}`;
+            btn.onclick = function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderSchedule(day);
+            };
+            tabsContainer.appendChild(btn);
+        });
+
+        // Initialize display with Day 1 data
+        renderSchedule(1);
+
+        // Persistent LocalStorage Booking Handler
+        const form = document.getElementById('registrationForm');
+        const formWrapper = document.getElementById('booking-form-wrapper');
+        const successWrapper = document.getElementById('booking-success');
+
+        // Check if user already booked previously on this browser device
+        if (localStorage.getItem('vadtal_katha_booked') === 'true') {
+            formWrapper.style.display = 'none';
+            successWrapper.style.display = 'block';
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a live server scenario, you would send name/phone data to your backend database here
+            localStorage.setItem('vadtal_katha_booked', 'true');
+            formWrapper.style.opacity = 0;
+            setTimeout(() => {
+                formWrapper.style.display = 'none';
+                successWrapper.style.display = 'block';
+            }, 300);
+        });
+
+        // Countdown Timer Countdown Setup (Targeting July 20, 2026)
+        const targetDate = new Date("July 20, 2026 17:30:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = "<p style='font-weight:bold; color:var(--accent);'>The Holy Event has Commenced!</p>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 60000);
+        updateCountdown(); // Run immediately on load
+    </script>
+</body>
+</html>
