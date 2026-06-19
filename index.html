@@ -32,7 +32,7 @@
 
         header {
             background: white;
-            padding: 8px 20px;
+            padding: 3px 20px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             position: sticky;
@@ -41,14 +41,14 @@
         }
 
         .logo {
-            max-width: 250px;
+            max-width: 120px;
             height: auto;
             width: 100%;
         }
 
         @media (max-width: 768px) {
             .logo {
-                max-width: 180px;
+                max-width: 100px;
             }
         }
 
@@ -415,8 +415,8 @@
             margin-bottom: 4px;
         }
 
-        /* Info Grid Layout - 3 boxes in first row, then full width map */
-        .info-grid {
+        /* Info Grid Layout - 3 boxes in row then full width map */
+        .info-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
@@ -424,20 +424,15 @@
         }
 
         @media (max-width: 1024px) {
-            .info-grid {
+            .info-row {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .info-grid {
+            .info-row {
                 grid-template-columns: 1fr;
             }
-        }
-
-        .map-full-width {
-            grid-column: 1 / -1;
-            margin-top: 20px;
         }
 
         .info-card {
@@ -454,6 +449,22 @@
             padding-bottom: 8px;
         }
 
+        /* Map Section - Full Width */
+        .map-section {
+            margin-top: 30px;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .map-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f1f1f1;
+            padding-bottom: 8px;
+        }
+
         /* Embedded Map */
         .embedded-map {
             position: relative;
@@ -462,6 +473,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 15px;
         }
 
         .embedded-map iframe {
@@ -706,8 +718,8 @@
             </div>
         </section>
 
-        <!-- Location and Contact Information Grid -->
-        <div class="info-grid">
+        <!-- Contact, Community, and Donation Row -->
+        <div class="info-row">
             
             <!-- Contact Information Card -->
             <div class="info-card">
@@ -774,18 +786,17 @@
                     <i class="fa-solid fa-heart"></i> Support Mandir
                 </a>
             </div>
+        </div>
 
-            <!-- Map - Full Width -->
-            <div class="info-card map-full-width">
-                <h3>📍 Temple Location Map</h3>
-                <p style="margin-bottom:15px; font-size:0.95rem; color:#555;">Shree Swaminarayan Vadtaldham Sanatan Mandir Adelaide</p>
-                
-                <!-- Embedded Google Map -->
-                <div class="embedded-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3073.8637645!2d139.6917!3d35.6795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjEgR3JlZW5maWVsZHMgRHJpdmUsIEdyZWVuIEZpZWxkcyBTQSA1MTA3!5e0!3m2!1sen!2sau!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+        <!-- Map - Full Width Section -->
+        <div class="map-section">
+            <h3>📍 Temple Location Map</h3>
+            <p style="margin-bottom:15px; font-size:0.95rem; color:#555;">Shree Swaminarayan Vadtaldham Sanatan Mandir Adelaide</p>
+            
+            <!-- Embedded Google Map -->
+            <div class="embedded-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3073.8637645!2d139.6917!3d35.6795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjEgR3JlZW5maWVsZHMgRHJpdmUsIEdyZWVuIEZpZWxkcyBTQSA1MTA3!5e0!3m2!1sen!2sau!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-
         </div>
 
     </div>
