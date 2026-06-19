@@ -251,20 +251,93 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            text-align: center;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
-        .stats-card h3 {
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-label {
             font-size: 0.9rem;
             opacity: 0.9;
             margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .stats-card .count {
+        .stat-count {
             font-size: 2.5rem;
             font-weight: 700;
+            color: #ffd700;
+        }
+
+        .registrations-list {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .registration-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #ffd700;
+            font-size: 0.9rem;
+        }
+
+        .registration-name {
+            font-weight: 600;
+            color: white;
+        }
+
+        .registration-details {
+            color: #ddd;
+            font-size: 0.85rem;
+            margin-top: 3px;
+        }
+
+        .admin-toggle-btn {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border: 2px solid var(--secondary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .admin-toggle-btn:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .admin-info {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
         }
 
         /* 7 Day Schedule Section */
@@ -345,7 +418,7 @@
         /* Location, Donation, and Footer Split grid */
         .info-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
@@ -370,56 +443,59 @@
             padding-bottom: 8px;
         }
 
-        /* Clickable Map Element */
-        .map-wrapper {
-            position: relative;
-            cursor: pointer;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            height: 300px;
-        }
-
-        .map-wrapper img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            transition: filter 0.3s;
-            object-fit: cover;
-        }
-
-        .map-wrapper:hover img {
-            filter: brightness(90%);
-        }
-
-        .map-overlay-text {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(138, 21, 21, 0.9);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            font-size: 0.95rem;
-            font-weight: bold;
-        }
-
         /* Embedded Map */
         .embedded-map {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 350px;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .embedded-map iframe {
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        .contact-list {
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-name {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+
+        .contact-phone {
+            color: #666;
+            font-size: 0.95rem;
         }
 
         /* Social / External Links buttons */
@@ -491,7 +567,15 @@
                 </div>
                 <div class="event-meta-item">
                     <i class="fa-solid fa-clock"></i>
-                    <span><strong>Daily Timing:</strong> 7:30 PM to 9:30 PM</span>
+                    <span><strong>Sabha Start:</strong> 5:30 PM</span>
+                </div>
+                <div class="event-meta-item">
+                    <i class="fa-solid fa-bell"></i>
+                    <span><strong>Aarti:</strong> 7:30 PM</span>
+                </div>
+                <div class="event-meta-item">
+                    <i class="fa-solid fa-bowl-rice"></i>
+                    <span><strong>Mahaprasad:</strong> 7:45 PM</span>
                 </div>
                 <div class="event-meta-item">
                     <i class="fa-solid fa-location-dot"></i>
@@ -513,12 +597,44 @@
 
         <!-- Registration Section -->
         <section class="booking-card" id="booking">
+            <!-- Admin Panel Toggle -->
+            <button class="admin-toggle-btn" onclick="toggleAdminMode()">
+                <i class="fas fa-shield-alt"></i> View Admin Panel
+            </button>
+
+            <!-- Admin Info -->
+            <div id="admin-info" style="display: none;" class="admin-info">
+                <i class="fas fa-info-circle"></i> <strong>Admin Mode:</strong> You are viewing registration statistics. This data is stored locally in your browser.
+            </div>
+
             <!-- Registration Stats (Admin View) -->
             <div id="stats-wrapper" style="display: none;">
                 <div class="stats-card">
-                    <h3>📊 Total Registrations</h3>
-                    <div class="count" id="total-count">0</div>
-                    <p style="margin-top: 10px; font-size: 0.9rem;">Family members expected: <strong id="total-members">0</strong></p>
+                    <h3 style="margin-bottom: 20px; margin-top: 0; font-size: 1.3rem;">📊 Registration Dashboard</h3>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Total Registrations</div>
+                            <div class="stat-count" id="total-count">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Family Members Expected</div>
+                            <div class="stat-count" id="total-members">0</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Average Family Size</div>
+                            <div class="stat-count" id="avg-family">0</div>
+                        </div>
+                    </div>
+
+                    <h4 style="color: white; margin-top: 20px; margin-bottom: 10px;">📋 Registered Families:</h4>
+                    <div class="registrations-list" id="registrations-list">
+                        <p style="text-align: center; color: #aaa;">No registrations yet</p>
+                    </div>
+
+                    <button onclick="exportRegistrations()" style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-top: 15px; font-weight: 600;">
+                        <i class="fas fa-download"></i> Export as CSV
+                    </button>
                 </div>
             </div>
 
@@ -558,7 +674,7 @@
                 <p>Thank you for registering. We look forward to welcoming you and your family to the sacred sabha.</p>
                 
                 <!-- Add To Calendar Button Link -->
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shreemat+Satsangijivan+Katha+GharSabha&dates=20260720T193000Z/20260727T213000Z&details=7-Day+Divine+Katha+Sabha+at+Vadtaldham+Adelaide.+Listen+to+Shreemat+Satsangijivan+Katha.+Orator:+Pujya+Sadguru+Swami+Shree+Nityaswarupdasji.&location=21+Greenfields+Drive,+Green+Fields+SA+5107" 
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shreemat+Satsangijivan+Katha+GharSabha&dates=20260720T173000Z/20260727T213000Z&details=7-Day+Divine+Katha+Sabha+at+Vadtaldham+Adelaide.+Sabha+5:30PM+Aarti+7:30PM+Food+7:45PM.+Orator:+Pujya+Sadguru+Swami+Shree+Nityaswarupdasji.&location=21+Greenfields+Drive,+Green+Fields+SA+5107" 
                    target="_blank" class="social-link btn-calendar">
                    <i class="fa-solid fa-calendar-plus"></i> Add Sabha to Calendar
                 </a>
@@ -580,27 +696,55 @@
             </div>
         </section>
 
-        <!-- Location Information and Map -->
+        <!-- Location and Contact Information Grid -->
         <div class="info-grid">
             
-            <!-- Map Card & Contact info -->
+            <!-- Map Card -->
             <div class="info-card">
-                <h3>📍 Location & Directions</h3>
+                <h3>📍 Temple Location Map</h3>
                 <p style="margin-bottom:15px; font-size:0.95rem; color:#555;">Shree Swaminarayan Vadtaldham Sanatan Mandir Adelaide</p>
                 
-                <!-- Click to open in Google Maps -->
-                <div class="map-wrapper" onclick="window.open('https://www.google.com/maps/search/?api=1&query=Shree+Swaminarayan+Vadtaldham+Sanatan+Mandir+Adelaide+21+Greenfields+Drive+Green+Fields+SA+5107', '_blank');">
-                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80" alt="Map Route View">
-                    <div class="map-overlay-text">
-                        <i class="fa-solid fa-map-location-dot"></i> Tap for Directions
-                    </div>
+                <!-- Embedded Google Map -->
+                <div class="embedded-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3073.8637645!2d139.6917!3d35.6795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjEgR3JlZW5maWVsZHMgRHJpdmUsIEdyZWVuIEZpZWxkcyBTQSA1MTA3!5e0!3m2!1sen!2sau!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
+            </div>
 
-                <div style="margin-top: 20px; font-size:0.9rem;">
-                    <p style="margin:5px 0; font-weight:bold;">📞 Contact Information:</p>
-                    <p><i class="fa-solid fa-phone" style="color:var(--secondary)"></i> Alpeshbhai Sachdev: +61 410 008 366</p>
-                    <p><i class="fa-solid fa-phone" style="color:var(--secondary)"></i> Naresh Rathod: +61 430 361 091</p>
-                    <p><i class="fa-solid fa-phone" style="color:var(--secondary)"></i> Hardevsinh Chauhan: +61 438 520 138</p>
+            <!-- Contact Information Card -->
+            <div class="info-card">
+                <h3>📞 Contact Information</h3>
+                <p style="margin-bottom:15px; font-size:0.95rem; color:#555;">Reach out to us for any questions or assistance regarding the Sabha.</p>
+                
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-name">Alpeshbhai Sachdev</div>
+                            <div class="contact-phone">+61 410 008 366</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-name">Naresh Rathod</div>
+                            <div class="contact-phone">+61 430 361 091</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-name">Hardevsinh Chauhan</div>
+                            <div class="contact-phone">+61 438 520 138</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -628,14 +772,6 @@
 
         </div>
 
-        <!-- Embedded Google Map -->
-        <div style="margin-top: 40px;">
-            <h2 style="color: var(--primary); text-align: center; margin-bottom: 20px;">📍 Temple Location Map</h2>
-            <div class="embedded-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.8637645!2d139.6917!3d35.6795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjEgR3JlZW5maWVsZHMgRHJpdmUsIEdyZWVuIEZpZWxkcyBTQSA1MTA3!5e0!3m2!1sen!2sau!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-
     </div>
 
     <footer>
@@ -646,13 +782,13 @@
     <script>
         // Schedule data - same for all 7 days
         const scheduleData = {
-            1: { date: "Mon, July 20", events: [ {time: "7:30 PM", name: "Sandhya Aarti", desc: "Opening evening prayers and divine rituals."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 1: Listen to the sacred spiritual discourse."}, {time: "9:15 PM", name: "Aarti & Mahaprasad", desc: "Concluding prayers and blessed food distribution."} ] },
-            2: { date: "Tue, July 21", events: [ {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening prayers and divine rituals."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 2: Continue listening to the sacred katha."}, {time: "9:15 PM", name: "Aarti & Mahaprasad", desc: "Prayers and blessed food distribution."} ] },
-            3: { date: "Wed, July 22", events: [ {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening prayers and divine rituals."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 3: Sacred spiritual discourse."}, {time: "9:15 PM", name: "Aarti & Mahaprasad", desc: "Prayers and blessed food distribution."} ] },
-            4: { date: "Thu, July 23", events: [ {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening prayers and divine rituals."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 4: Spiritual discourse and teachings."}, {time: "9:15 PM", name: "Aarti & Mahaprasad", desc: "Prayers and blessed food distribution."} ] },
-            5: { date: "Fri, July 24", events: [ {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening prayers and divine rituals."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 5: Listen to the sacred katha."}, {time: "9:15 PM", name: "Aarti & Mahaprasad", desc: "Prayers and blessed food distribution."} ] },
-            6: { date: "Sat, July 25", events: [ {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening prayers and divine rituals."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 6: Sacred spiritual discourse."}, {time: "9:15 PM", name: "Aarti & Mahaprasad", desc: "Prayers and blessed food distribution."} ] },
-            7: { date: "Sun, July 27", events: [ {time: "7:30 PM", name: "Grand Finale Aarti & Purnahuti", desc: "Concluding divine prayers and flower offerings."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha - Final Discourse", desc: "Day 7: Final sacred katha with blessings."}, {time: "9:15 PM", name: "Maha-Aarti & Mahaprasad", desc: "Grand concluding prayers and blessed food."} ] }
+            1: { date: "Mon, July 20", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha with initial prayers."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony begins."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 1: Listen to the sacred spiritual discourse."}, {time: "9:00 PM", name: "Aarti Concludes", desc: "Evening prayers and rituals conclude."}, {time: "9:15 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
+            2: { date: "Tue, July 21", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha with initial prayers."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony begins."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 2: Continue listening to the sacred katha."}, {time: "9:00 PM", name: "Aarti Concludes", desc: "Evening prayers and rituals conclude."}, {time: "9:15 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
+            3: { date: "Wed, July 22", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha with initial prayers."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony begins."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 3: Sacred spiritual discourse."}, {time: "9:00 PM", name: "Aarti Concludes", desc: "Evening prayers and rituals conclude."}, {time: "9:15 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
+            4: { date: "Thu, July 23", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha with initial prayers."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony begins."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 4: Spiritual discourse and teachings."}, {time: "9:00 PM", name: "Aarti Concludes", desc: "Evening prayers and rituals conclude."}, {time: "9:15 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
+            5: { date: "Fri, July 24", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha with initial prayers."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony begins."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 5: Listen to the sacred katha."}, {time: "9:00 PM", name: "Aarti Concludes", desc: "Evening prayers and rituals conclude."}, {time: "9:15 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
+            6: { date: "Sat, July 25", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha with initial prayers."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony begins."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha", desc: "Day 6: Sacred spiritual discourse."}, {time: "9:00 PM", name: "Aarti Concludes", desc: "Evening prayers and rituals conclude."}, {time: "9:15 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
+            7: { date: "Sun, July 27", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha with initial prayers."}, {time: "7:30 PM", name: "Grand Finale Aarti & Purnahuti", desc: "Concluding divine prayers and flower offerings."}, {time: "7:45 PM", name: "Shreemat Satsangijivan Katha - Final Discourse", desc: "Day 7: Final sacred katha with blessings."}, {time: "9:00 PM", name: "Aarti Concludes", desc: "Evening prayers and rituals conclude."}, {time: "9:15 PM", name: "Maha-Mahaprasad", desc: "Grand concluding blessed food distribution."} ] }
         };
 
         // Render Tabs and Schedule
@@ -698,6 +834,7 @@
         const formWrapper = document.getElementById('booking-form-wrapper');
         const successWrapper = document.getElementById('booking-success');
         const statsWrapper = document.getElementById('stats-wrapper');
+        const adminInfo = document.getElementById('admin-info');
 
         // Load existing registrations
         let registrations = JSON.parse(localStorage.getItem('sabha_registrations')) || [];
@@ -705,9 +842,54 @@
         function updateStats() {
             const totalRegistrations = registrations.length;
             const totalMembers = registrations.reduce((sum, reg) => sum + parseInt(reg.attendees), 0);
+            const avgFamily = totalRegistrations > 0 ? (totalMembers / totalRegistrations).toFixed(1) : 0;
             
             document.getElementById('total-count').textContent = totalRegistrations;
             document.getElementById('total-members').textContent = totalMembers;
+            document.getElementById('avg-family').textContent = avgFamily;
+
+            // Render registrations list
+            const listHTML = registrations.length > 0 ? registrations.map((reg, index) => `
+                <div class="registration-item">
+                    <div class="registration-name">${index + 1}. ${reg.name}</div>
+                    <div class="registration-details">
+                        📞 ${reg.phone} | 👨‍👩‍👧‍👦 ${reg.attendees} members | 🕐 ${reg.timestamp}
+                    </div>
+                </div>
+            `).join('') : '<p style="text-align: center; color: #aaa;">No registrations yet</p>';
+            
+            document.getElementById('registrations-list').innerHTML = listHTML;
+        }
+
+        // Toggle Admin Mode
+        function toggleAdminMode() {
+            const isAdmin = localStorage.getItem('admin_mode') === 'true';
+            
+            if (!isAdmin) {
+                const password = prompt('Enter admin password to view registrations:');
+                if (password === '2026sabha') {
+                    localStorage.setItem('admin_mode', 'true');
+                    showAdminPanel();
+                } else if (password !== null) {
+                    alert('Incorrect password');
+                }
+            } else {
+                localStorage.removeItem('admin_mode');
+                hideAdminPanel();
+            }
+        }
+
+        function showAdminPanel() {
+            statsWrapper.style.display = 'block';
+            adminInfo.style.display = 'block';
+            updateStats();
+            document.querySelector('.admin-toggle-btn').textContent = '✓ Admin Mode Active';
+        }
+
+        function hideAdminPanel() {
+            statsWrapper.style.display = 'none';
+            adminInfo.style.display = 'none';
+            document.querySelector('.admin-toggle-btn').textContent = 'View Admin Panel';
         }
 
         // Check if user already registered
@@ -739,14 +921,36 @@
             }, 300);
         });
 
-        // Show stats to admin (uncomment next line to enable: localStorage.setItem('admin_mode', 'true'))
-        if (localStorage.getItem('admin_mode') === 'true') {
-            statsWrapper.style.display = 'block';
-            updateStats();
+        // Export registrations as CSV
+        function exportRegistrations() {
+            if (registrations.length === 0) {
+                alert('No registrations to export');
+                return;
+            }
+
+            let csv = 'Name,Phone,Family Members,Registration Time\n';
+            registrations.forEach(reg => {
+                csv += `"${reg.name}","${reg.phone}",${reg.attendees},"${reg.timestamp}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sabha_registrations_${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
         }
 
-        // Countdown Timer (Sabha starts July 20, 2026 at 7:30 PM)
-        const targetDate = new Date("July 20, 2026 19:30:00").getTime();
+        // Check admin mode on load
+        if (localStorage.getItem('admin_mode') === 'true') {
+            showAdminPanel();
+        }
+
+        // Countdown Timer (Sabha starts July 20, 2026 at 5:30 PM)
+        const targetDate = new Date("July 20, 2026 17:30:00").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -771,5 +975,6 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>
+
 </body>
 </html>
