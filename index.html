@@ -424,7 +424,7 @@
             margin-bottom: 4px;
         }
 
-        /* Info Grid Layout - 4 boxes in row then full width map */
+        /* Info Grid Layout - 3 boxes in row then full width map */
         .info-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -444,18 +444,9 @@
             }
         }
 
-        /* Extended info row for Padhramani contact */
-        .extended-info-row {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+        /* Padhramani Card Section - Full Width */
+        .padhramani-section-full {
             margin-top: 30px;
-        }
-
-        @media (max-width: 1024px) {
-            .extended-info-row {
-                grid-template-columns: 1fr;
-            }
         }
 
         .info-card {
@@ -755,7 +746,7 @@
             
             <!-- Contact Information Card -->
             <div class="info-card">
-                <h3>📞 Contact Information</h3>
+                <h3>📞 Contact for Information</h3>
                 <p style="margin-bottom:15px; font-size:0.95rem; color:#555;">Reach out to us for any questions or assistance regarding the Sabha.</p>
                 
                 <div class="contact-list">
@@ -821,11 +812,10 @@
         </div>
 
         <!-- Padhramani Contact Section -->
-        <div class="extended-info-row">
+        <div class="padhramani-section-full">
             <!-- Padhramani Contact Card -->
             <div class="padhramani-card">
                 <h3><i class="fa-solid fa-phone"></i> Contact for Padhramani</h3>
-                <p style="margin-bottom: 20px; font-size:0.9rem; opacity: 0.95;">Reach out for Padhramani arrangements and sponsorships.</p>
                 
                 <div class="padhramani-section">
                     <div class="padhramani-name">Rakesh Patel</div>
@@ -844,19 +834,6 @@
                         +61 452 394 996
                     </div>
                 </div>
-            </div>
-
-            <!-- Additional Info Card (placeholder for future use) -->
-            <div class="info-card">
-                <h3>📋 Padhramani Information</h3>
-                <p style="margin-bottom:15px; font-size:0.95rem; color:#555;">Padhramani is the beautiful tradition of offering food (Prasad) to devotees during the sacred sabha. Your sponsorship helps us serve meals to all attendees with love and devotion.</p>
-                <p style="font-size:0.9rem; color:#666; line-height: 1.8;">
-                    <strong>Why Sponsor Padhramani?</strong><br>
-                    🙏 Participate in divine service<br>
-                    👨‍👩‍👧‍👦 Nourish your spiritual community<br>
-                    💝 Receive blessings from the sacred sabha<br>
-                    📿 Honor the tradition of Seva
-                </p>
             </div>
         </div>
 
