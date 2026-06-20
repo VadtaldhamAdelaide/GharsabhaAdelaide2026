@@ -246,6 +246,15 @@
             margin-bottom: 10px;
         }
 
+        /* Zoho Form Container */
+        .zoho-form-wrapper {
+            margin: 20px 0;
+        }
+
+        #ziframe_149399 {
+            border-radius: 8px;
+        }
+
         /* Registration Stats */
         .stats-card {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -340,7 +349,7 @@
             margin-bottom: 20px;
         }
 
-        /* 7 Day Schedule Section */
+        /* 8 Day Schedule Section */
         .schedule-section {
             margin: 40px 0;
         }
@@ -575,12 +584,12 @@
             </div>
             
             <div class="hero-details">
-                <span class="badge"><i class="fa-solid fa-calendar-days"></i> 7-Day Sacred Sabha</span>
+                <span class="badge"><i class="fa-solid fa-calendar-days"></i> 8-Day Sacred Sabha</span>
                 <h1>Shreemat Satsangijivan Katha</h1>
                 <h3 style="color:var(--secondary); margin-bottom:15px;">2290<sup>th</sup> to 2297<sup>th</sup> GharSabha</h3>
                 
                 <p style="margin-bottom: 20px; font-size: 1rem; color: #555;">
-                    Join us in the divine presence of Chairman Swami Shree Santvallabhdasji & Mukhya Kothari Swami Shree Devprakashdasji (Vadtal Sansthan). Listen to the sacred Shreemat Satsangijivan Katha beautifully orated by Pujya Sadguru Swami Shree Nityaswarupdasji.
+                    Join us in the divine presence of Chairman Swami Shree Santvallabhdasji & Mukhya Kothari Swami Shree Devprakashdasji (Vadtal Sansthan). Listen to the sacred Shreemat Satsangijivan Katha beautifully orated by Pujya Sadguru Swami Shree Nityaswarupdasj.
                 </p>
 
                 <div class="event-meta-item">
@@ -619,95 +628,62 @@
 
         <!-- Registration Section -->
         <section class="booking-card" id="booking">
-            <!-- Admin Panel Toggle -->
-            <button class="admin-toggle-btn" onclick="toggleAdminMode()">
-                <i class="fas fa-shield-alt"></i> View Admin Panel
-            </button>
+            <h2>Free Registration for Sacred Sabha</h2>
+            <p style="color:#666; margin-bottom: 20px;">Registering helps us arrange accurate Mahaprasad (blessed food) for all attendees. Your participation is cherished.</p>
+            
+            <!-- Zoho Form Integration -->
+            <div class="zoho-form-wrapper">
+                <iframe id="ziframe_149399" aria-label="Katha Registration 2026" frameborder="0" style="height:500px;width:99%;border:none;border-radius:8px;" src='https://forms.zohopublic.com.au/shreeswaminarayanmandirvadt1/form/KathaRegistration2026/formperma/L-mSHtDY7sPk8nu7iGyofeeyqznHX66P44RsrsDperE'>    
+                </iframe>
 
-            <!-- Admin Info -->
-            <div id="admin-info" style="display: none;" class="admin-info">
-                <i class="fas fa-info-circle"></i> <strong>Admin Mode:</strong> You are viewing registration statistics. This data is stored locally in your browser.
+                <script type="text/javascript">
+                (function() {
+                  try {
+                    var zf_frame = document.getElementById("ziframe_149399");
+                    var ifrmSrc = zf_frame.src;
+                        
+                        if (!((new RegExp("[?&]referrername=")).test(ifrmSrc))) {
+                            var rfr = window.location.href;
+                            
+                            try { 
+                                rfr = window.self !== window.top ? 
+                                    window.top.location.href : 
+                                    (/^https?:\/\/[\w.-]+\.[a-zA-Z]{2,}/i.test(rfr) ? rfr : "");
+                            } catch (e) {}
+                            
+                            if (rfr && rfr !== "") {
+                                if (rfr.length > 1800) {
+                                    var queryIndex = rfr.indexOf('?');
+                                    if (queryIndex > -1) {
+                                        rfr = rfr.substring(0, queryIndex);
+                                    }
+                                    if (rfr.length > 1800) {
+                                        rfr = rfr.substring(0, 1800);
+                                    }
+                                }
+                                ifrmSrc += ((ifrmSrc.indexOf('?') > 0) ? '&' : '?') + 'referrername=' + encodeURIComponent(rfr);
+                            }
+                        }
+                        if (zf_frame.src !== ifrmSrc) {
+                            zf_frame.src = ifrmSrc;
+                        }
+                  } catch (e) {}
+                })();
+                </script>
             </div>
 
-            <!-- Registration Stats (Admin View) -->
-            <div id="stats-wrapper" style="display: none;">
-                <div class="stats-card">
-                    <h3 style="margin-bottom: 20px; margin-top: 0; font-size: 1.3rem;">📊 Registration Dashboard</h3>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-label">Total Registrations</div>
-                            <div class="stat-count" id="total-count">0</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">Family Members Expected</div>
-                            <div class="stat-count" id="total-members">0</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">Average Family Size</div>
-                            <div class="stat-count" id="avg-family">0</div>
-                        </div>
-                    </div>
-
-                    <h4 style="color: white; margin-top: 20px; margin-bottom: 10px;">📋 Registered Families:</h4>
-                    <div class="registrations-list" id="registrations-list">
-                        <p style="text-align: center; color: #aaa;">No registrations yet</p>
-                    </div>
-
-                    <button onclick="exportRegistrations()" style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-top: 15px; font-weight: 600;">
-                        <i class="fas fa-download"></i> Export as CSV
-                    </button>
-                </div>
-            </div>
-
-            <div id="booking-form-wrapper">
-                <h2>Free Registration for Sacred Sabha</h2>
-                <p style="color:#666; margin-bottom: 20px;">Registering helps us arrange accurate Mahaprasad (blessed food) for all attendees. Your participation is cherished.</p>
-                <form id="registrationForm">
-                    <div class="form-group">
-                        <label for="fullName">Full Name</label>
-                        <input type="text" id="fullName" required placeholder="Enter your full name">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" required placeholder="Enter phone number">
-                    </div>
-                    <div class="form-group">
-                        <label for="attendees">Number of Family Members Attending</label>
-                        <select id="attendees">
-                            <option value="1">1 Person</option>
-                            <option value="2">2 People</option>
-                            <option value="3">3 People</option>
-                            <option value="4">4 People</option>
-                            <option value="5">5 People</option>
-                            <option value="6">6 People</option>
-                            <option value="7">7 People</option>
-                            <option value="8">8+ People</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn">Register for Sabha</button>
-                </form>
-            </div>
-
-            <!-- Success Message after registering -->
-            <div id="booking-success" class="success-message">
-                <i class="fa-solid fa-circle-check"></i>
-                <h2>Registration Confirmed!</h2>
-                <p>Thank you for registering. We look forward to welcoming you and your family to the sacred sabha.</p>
-                
-                <!-- Add To Calendar Button Link -->
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shreemat+Satsangijivan+Katha+GharSabha&dates=20260720T173000Z/20260727T213000Z&details=7-Day+Divine+Katha+Sabha+at+Vadtaldham+Adelaide.+Sabha+5:30PM+Aarti+7:30PM+Food+7:45PM.+Orator:+Pujya+Sadguru+Swami+Shree+Nityaswarupdasji.&location=21+Greenfields+Drive,+Green+Fields+SA+5107" 
-                   target="_blank" class="social-link btn-calendar">
-                   <i class="fa-solid fa-calendar-plus"></i> Add Sabha to Calendar
-                </a>
-            </div>
+            <!-- Add To Calendar Button Link -->
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shreemat+Satsangijivan+Katha+GharSabha&dates=20260720T173000Z/20260728T213000Z&details=8-Day+Divine+Katha+Sabha+at+Vadtaldham+Adelaide.+Sabha+5:30PM+Aarti+7:30PM+Food+7:45PM.+Orator:+Pujya+Sadguru+Swami+Shree+Nityaswarupdasj.&location=21+Greenfields+Drive,+Green+Fields+SA+5107" 
+               target="_blank" class="social-link btn-calendar" style="width:100%; margin-top:20px;">
+               <i class="fa-solid fa-calendar-plus"></i> Add Sabha to Calendar
+            </a>
         </section>
 
-        <!-- 7 Days Sabha Schedule -->
+        <!-- 8 Days Sabha Schedule -->
         <section class="schedule-section">
-            <h2>Daily Sabha Schedule (All 7 Days)</h2>
+            <h2>Daily Sabha Schedule (All 8 Days)</h2>
             <div class="schedule-info">
-                <i class="fa-solid fa-info-circle"></i> <strong>Same Sabha Schedule Every Day:</strong> All seven days follow the same schedule. Attendees will listen to the divine Shreemat Satsangijivan Katha and participate in Aarti. Join for any day or for the complete 7 days.
+                <i class="fa-solid fa-info-circle"></i> <strong>Same Sabha Schedule Every Day:</strong> All eight days follow the same schedule. Attendees will listen to the divine Shreemat Satsangijivan Katha and participate in Aarti. Join for any day or for the complete 8 days.
             </div>
             <div class="tabs" id="tabs-container">
                 <!-- Javascript will load buttons here -->
@@ -754,6 +730,26 @@
                         <div class="contact-info">
                             <div class="contact-name">Hardevsinh Chauhan</div>
                             <div class="contact-phone">+61 438 520 138</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-name">Rakesh Patel</div>
+                            <div class="contact-phone">+61 433 384 996</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-name">Himalay Dave</div>
+                            <div class="contact-phone">+61 452 394 996</div>
                         </div>
                     </div>
                 </div>
@@ -807,7 +803,7 @@
     </footer>
 
     <script>
-        // Schedule data - Only 3 timings per day
+        // Schedule data - 8 days with timings per day
         const scheduleData = {
             1: { date: "Mon, July 20", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha and listening to Shreemat Satsangijivan Katha."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony."}, {time: "7:45 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
             2: { date: "Tue, July 21", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha and listening to Shreemat Satsangijivan Katha."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony."}, {time: "7:45 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
@@ -815,7 +811,8 @@
             4: { date: "Thu, July 23", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha and listening to Shreemat Satsangijivan Katha."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony."}, {time: "7:45 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
             5: { date: "Fri, July 24", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha and listening to Shreemat Satsangijivan Katha."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony."}, {time: "7:45 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
             6: { date: "Sat, July 25", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha and listening to Shreemat Satsangijivan Katha."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony."}, {time: "7:45 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
-            7: { date: "Sun, July 27", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha and listening to the final Shreemat Satsangijivan Katha."}, {time: "7:30 PM", name: "Grand Finale Aarti", desc: "Concluding divine Aarti ceremony with blessings."}, {time: "7:45 PM", name: "Maha-Mahaprasad", desc: "Grand concluding blessed food distribution."} ] }
+            7: { date: "Sun, July 26", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha and listening to Shreemat Satsangijivan Katha."}, {time: "7:30 PM", name: "Sandhya Aarti", desc: "Evening Aarti ceremony."}, {time: "7:45 PM", name: "Mahaprasad", desc: "Blessed food distribution for all attendees."} ] },
+            8: { date: "Mon, July 27", events: [ {time: "5:30 PM", name: "Sabha Begins", desc: "Opening of the sacred Sabha and listening to the final Shreemat Satsangijivan Katha."}, {time: "7:30 PM", name: "Grand Finale Aarti", desc: "Concluding divine Aarti ceremony with blessings."}, {time: "7:45 PM", name: "Maha-Mahaprasad", desc: "Grand concluding blessed food distribution."} ] }
         };
 
         // Render Tabs and Schedule
@@ -855,126 +852,6 @@
 
         // Initialize with Day 1
         renderSchedule(1);
-
-        // Registration Handler
-        const form = document.getElementById('registrationForm');
-        const formWrapper = document.getElementById('booking-form-wrapper');
-        const successWrapper = document.getElementById('booking-success');
-        const statsWrapper = document.getElementById('stats-wrapper');
-        const adminInfo = document.getElementById('admin-info');
-
-        // Load existing registrations
-        let registrations = JSON.parse(localStorage.getItem('sabha_registrations')) || [];
-
-        function updateStats() {
-            const totalRegistrations = registrations.length;
-            const totalMembers = registrations.reduce((sum, reg) => sum + parseInt(reg.attendees), 0);
-            const avgFamily = totalRegistrations > 0 ? (totalMembers / totalRegistrations).toFixed(1) : 0;
-            
-            document.getElementById('total-count').textContent = totalRegistrations;
-            document.getElementById('total-members').textContent = totalMembers;
-            document.getElementById('avg-family').textContent = avgFamily;
-
-            // Render registrations list
-            const listHTML = registrations.length > 0 ? registrations.map((reg, index) => `
-                <div class="registration-item">
-                    <div class="registration-name">${index + 1}. ${reg.name}</div>
-                    <div class="registration-details">
-                        📞 ${reg.phone} | 👨‍👩‍👧‍👦 ${reg.attendees} members | 🕐 ${reg.timestamp}
-                    </div>
-                </div>
-            `).join('') : '<p style="text-align: center; color: #aaa;">No registrations yet</p>';
-            
-            document.getElementById('registrations-list').innerHTML = listHTML;
-        }
-
-        // Toggle Admin Mode
-        function toggleAdminMode() {
-            const isAdmin = localStorage.getItem('admin_mode') === 'true';
-            
-            if (!isAdmin) {
-                const password = prompt('Enter admin password to view registrations:');
-                if (password === '2026sabha') {
-                    localStorage.setItem('admin_mode', 'true');
-                    showAdminPanel();
-                } else if (password !== null) {
-                    alert('Incorrect password');
-                }
-            } else {
-                localStorage.removeItem('admin_mode');
-                hideAdminPanel();
-            }
-        }
-
-        function showAdminPanel() {
-            statsWrapper.style.display = 'block';
-            adminInfo.style.display = 'block';
-            updateStats();
-            document.querySelector('.admin-toggle-btn').textContent = '✓ Admin Mode Active';
-        }
-
-        function hideAdminPanel() {
-            statsWrapper.style.display = 'none';
-            adminInfo.style.display = 'none';
-            document.querySelector('.admin-toggle-btn').textContent = 'View Admin Panel';
-        }
-
-        // Check if user already registered
-        if (localStorage.getItem('vadtal_sabha_registered') === 'true') {
-            formWrapper.style.display = 'none';
-            successWrapper.style.display = 'block';
-        }
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const newRegistration = {
-                name: document.getElementById('fullName').value,
-                phone: document.getElementById('phone').value,
-                attendees: document.getElementById('attendees').value,
-                timestamp: new Date().toLocaleString()
-            };
-            
-            registrations.push(newRegistration);
-            localStorage.setItem('sabha_registrations', JSON.stringify(registrations));
-            localStorage.setItem('vadtal_sabha_registered', 'true');
-            
-            updateStats();
-            
-            formWrapper.style.opacity = 0;
-            setTimeout(() => {
-                formWrapper.style.display = 'none';
-                successWrapper.style.display = 'block';
-            }, 300);
-        });
-
-        // Export registrations as CSV
-        function exportRegistrations() {
-            if (registrations.length === 0) {
-                alert('No registrations to export');
-                return;
-            }
-
-            let csv = 'Name,Phone,Family Members,Registration Time\n';
-            registrations.forEach(reg => {
-                csv += `"${reg.name}","${reg.phone}",${reg.attendees},"${reg.timestamp}"\n`;
-            });
-
-            const blob = new Blob([csv], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `sabha_registrations_${new Date().toISOString().split('T')[0]}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-        }
-
-        // Check admin mode on load
-        if (localStorage.getItem('admin_mode') === 'true') {
-            showAdminPanel();
-        }
 
         // Countdown Timer (Sabha starts July 20, 2026 at 5:30 PM)
         const targetDate = new Date("July 20, 2026 17:30:00").getTime();
